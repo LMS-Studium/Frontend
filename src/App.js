@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from "./components/Auth/Register";
-import Login from "./components/Auth/Login";
-import StudentLandingPaged from "./components/StudentDashboards/StudentLandingPage";
-import InstructorDashboard from "./components/InstructorDashboards/InstructorDashboard";
-import AdminDashboard from "./components/AdminDashboards/AdminDashboard";
+import Register from "./Student/components/Auth/Register";
+import Login from "./Student/components/Auth/Login";
+import StudentLandingPaged from "./Student/components/StudentDashboards/StudentLandingPage";
+import InstructorDashboard from "./Student/components/InstructorDashboards/InstructorDashboard";
+import AdminDashboard from "./Student/components/AdminDashboards/AdminDashboard";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<StudentLandingPaged />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/student-dashboard" element={<StudentLandingPaged />} />
         <Route path="/register" element={<Register />} />
         <Route path="/instructor-dashboard" element={<InstructorDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
