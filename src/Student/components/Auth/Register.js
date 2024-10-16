@@ -1,10 +1,33 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState } from "react";
 import LoginPng from "../../assets/Login page img.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../../App.css";
+import { registerUser } from "../../services/RegisterApi";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    console.log("you pass is", password);
+
+    try {
+      // Now correctly passing an object
+      const response = await registerUser({ name, email, password });
+      console.log("Sign-up success", response);
+
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <div className="font-roboto flex justify-between items-center h-screen">
       <div className="h-[100%] w-[50%] flex items-center justify-center ">
@@ -18,7 +41,8 @@ const Register = () => {
           <div className="flex items-center justify-center font-semibold text-[30px]">
             <h1>Create Your Account</h1>
           </div>
-          <div className="mt-10 flex flex-col gap-5">
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <form className="mt-10 flex flex-col gap-5" onSubmit={handleSubmit}>
             <div className="flex justify-center flex-col">
               <label
                 htmlFor="Name"
@@ -30,6 +54,8 @@ const Register = () => {
                 type="text"
                 placeholder="Enter your name"
                 className="bg-[#b0bac37a] h-[50px] p-5 rounded-xl border-none outline-none"
+                onChange={(e) => setName(e.target.value)}
+                required
               />
             </div>
             <div className="flex justify-center flex-col">
@@ -43,6 +69,8 @@ const Register = () => {
                 type="email"
                 placeholder="Enter your email"
                 className="bg-[#b0bac37a] h-[50px] p-5 rounded-xl border-none outline-none"
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="flex justify-center flex-col">
@@ -56,13 +84,15 @@ const Register = () => {
                 type="password"
                 placeholder="Enter your password"
                 className="bg-[#b0bac37a] h-[50px] p-5 rounded-xl border-none outline-none"
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
 
             <div className="flex justify-center bg-[#D8E9F8] rounded-xl h-[50px] cursor-pointer mt-4">
-              <button>Create account</button>
+              <button type="submit">Create account</button>
             </div>
-          </div>
+          </form>
 
           <div className="flex flex-col items-center justify-center mt-10">
             <p className="text-[#9b9c9c]">- OR -</p>

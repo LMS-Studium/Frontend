@@ -3,6 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import LogoOne from "../../assets/studium-high-resolution-logo-transparent.png";
+import { ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,7 @@ const Navbar = () => {
         <div className="text-3xl font-semibold ">
           <img src={LogoOne} className="w-[150px]"></img>
         </div>
-        <div className="relative w-[40%] flex justify-between items-center">
+        <div className="relative w-[50%] flex justify-between items-center">
           <input
             placeholder="Search your courses"
             className="w-full text-slate-800 placeholder-slate-400 px-5 py-2  rounded-full border border-black  focus:outline-none "
@@ -20,19 +21,21 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
           </div>
         </div>
-        <div>
+        <div className="flex justify-between items-center space-x-10">
           <ul className="flex space-x-10 items-center justify-center">
+            <li className="cursor-pointer hover:text-[#003b4d]">Courses</li>
             <li className="cursor-pointer hover:text-[#003b4d]">
-              Free Content
+              Become Instructor
             </li>
-            <li className="cursor-pointer hover:text-[#003b4d]">
-              Paid Courses
-            </li>
-            <li className="cursor-pointer hover:text-[#003b4d]">My Courses</li>
           </ul>
+          <div className="cursor-pointer hover:text-[#003b4d]">
+            <ShoppingCart size="20" color="#003b4d" />
+          </div>
         </div>
         <div className="flex space-x-4 items-center">
-          <div className="cursor-pointer hover:text-[#003b4d]">Login</div>
+          <div className="cursor-pointer  border-[1px] border-black px-4 py-2 text-black rounded-md">
+            Login
+          </div>
           <div className=" cursor-pointer bg-[#003b4d] px-4 py-2 text-white rounded-md">
             Signup
           </div>
