@@ -7,11 +7,9 @@ import { ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <div className="font-roboto">
-      <header className="flex items-center justify-between bg-white shadow-md px-4 py-4">
-        <div className="text-3xl font-semibold ">
-          <img src={LogoOne} className="w-[150px]"></img>
-        </div>
+    <div className="font-roboto ">
+      <header className="flex items-center justify-between bg-[#003b4d] px-10 py-10">
+        <div className="text-3xl font-semibold  text-white">STUDIUM</div>
         <div className="relative w-[50%] flex justify-between items-center">
           <input
             placeholder="Search your courses"
@@ -23,20 +21,18 @@ const Navbar = () => {
         </div>
         <div className="flex justify-between items-center space-x-10">
           <ul className="flex space-x-10 items-center justify-center">
-            <li className="cursor-pointer hover:text-[#003b4d]">Courses</li>
-            <li className="cursor-pointer hover:text-[#003b4d]">
-              Become Instructor
-            </li>
+            <li className="cursor-pointer  text-white">Courses</li>
+            <li className="cursor-pointer text-white">Become Instructor</li>
           </ul>
-          <div className="cursor-pointer hover:text-[#003b4d]">
-            <ShoppingCart size="20" color="#003b4d" />
+          <div className="cursor-pointer ">
+            <ShoppingCart size="20" color="white" />
           </div>
         </div>
-        <div className="flex space-x-4 items-center">
-          <div className="cursor-pointer  border-[1px] border-black px-4 py-2 text-black rounded-md">
+        <div className="flex space-x-4 items-center mr-[26px]">
+          <div className="cursor-pointer  border-[1px] border-white px-4 py-2 text-white rounded-md">
             Login
           </div>
-          <div className=" cursor-pointer bg-[#003b4d] px-4 py-2 text-white rounded-md">
+          <div className=" cursor-pointer text-black px-4 py-2 bg-white rounded-md">
             Signup
           </div>
         </div>

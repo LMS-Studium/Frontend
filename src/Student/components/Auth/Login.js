@@ -28,17 +28,17 @@ const Login = () => {
   };
 
   return (
-    <div className="font-roboto flex justify-between items-center h-screen">
+    <div className="font-roboto flex justify-between items-center p-4 w-[100%] h-screen  bg-[#D8E9F8]">
       <div className="h-[100%] w-[50%] flex items-center justify-center ">
         <div className="h-full w-[50%] flex items-center justify-center">
           <img src={LoginPng} className="h-[50%] w-[100%] object-contain" />
         </div>
       </div>
 
-      <div className="w-[50%] bg-slate-100 shadow-2xl rounded-l-3xl h-full flex items-center justify-center ">
+      <div className="w-[40%] bg-slate-100 shadow-2xl rounded-3xl h-full flex items-center justify-center ">
         <div className="w-[80%]  p-6 ">
           <div className="flex items-center justify-center font-semibold text-[30px]">
-            <h1>Login Your Account</h1>
+            <h1>Hey, Welcome Back</h1>
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
           <form className="mt-10 flex flex-col gap-5" onSubmit={handleSubmit}>
@@ -73,8 +73,10 @@ const Login = () => {
               />
             </div>
 
-            <div className="flex justify-center bg-[#D8E9F8] rounded-xl h-[50px] cursor-pointer mt-4">
-              <button type="submit">Login</button>
+            <div className="flex justify-center bg-[#003b4d] rounded-xl h-[50px] cursor-pointer mt-4">
+              <button type="submit" className="text-white">
+                Login
+              </button>
             </div>
           </form>
 
