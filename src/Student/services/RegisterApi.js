@@ -1,12 +1,15 @@
 export const registerUser = async ({ name, email, password }) => {
   try {
-    const response = await fetch("http://localhost:8080/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }), // wrap all fields in an object
-    });
+    const response = await fetch(
+      "https://lms-studium.up.railway.app/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }), // wrap all fields in an object
+      }
+    );
 
     if (!response.ok) {
       const errorData = await response.json(); // Capture the backend's response for better error handling
