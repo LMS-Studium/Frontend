@@ -20,7 +20,7 @@ const Login = () => {
       const response = await loginUser({ email, password });
       console.log("Login Successful", response);
 
-      navigate("/student-dashboard");
+      navigate("/");
     } catch (err) {
       console.log(err);
       setError(err.message);
@@ -28,19 +28,19 @@ const Login = () => {
   };
 
   return (
-    <div className="font-roboto flex justify-between items-center p-4 w-[100%] h-screen  bg-[#D8E9F8]">
-      <div className="h-[100%] w-[50%] flex items-center justify-center ">
-        <div className="h-full w-[50%] flex items-center justify-center">
-          <img src={LoginPng} className="h-[50%] w-[100%] object-contain" />
-        </div>
+    <div className="font-roboto flex flex-col md:flex-row justify-between items-center w-full h-screen bg-[#74b9f5fb]">
+      <div className="hidden md:flex h-full w-full md:w-[50%] items-center justify-center">
+        <img src={LoginPng} className="h-[50%] w-[100%] object-contain" />
       </div>
 
-      <div className="w-[40%] bg-slate-100 shadow-2xl rounded-3xl h-full flex items-center justify-center ">
-        <div className="w-[80%]  p-6 ">
-          <div className="flex items-center justify-center font-semibold text-[30px]">
-            <h1>Hey, Welcome Back</h1>
+      <div className="w-full md:w-[40%] bg-slate-100 shadow-2xl  h-full flex items-center justify-center p-5 md:p-0">
+        <div className="w-full md:w-[80%]">
+          <div className="flex items-center justify-center font-semibold text-[24px] md:text-[30px]">
+            <h1>Hey, Welcome Back !</h1>
           </div>
+
           {error && <p style={{ color: "red" }}>{error}</p>}
+
           <form className="mt-10 flex flex-col gap-5" onSubmit={handleSubmit}>
             <div className="flex justify-center flex-col">
               <label
@@ -52,7 +52,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-[#b0bac37a] h-[50px] p-5 rounded-xl border-none outline-none"
+                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -67,13 +67,13 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="Enter your password"
-                className="bg-[#b0bac37a] h-[50px] p-5 rounded-xl border-none outline-none"
+                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
 
-            <div className="flex justify-center bg-[#003b4d] rounded-xl h-[50px] cursor-pointer mt-4">
+            <div className="flex justify-center bg-[#003b4d] rounded-l h-[50px] cursor-pointer mt-4">
               <button type="submit" className="text-white">
                 Login
               </button>
@@ -84,7 +84,7 @@ const Login = () => {
             <p className="text-[#9b9c9c]">- OR -</p>
             <p className="mt-5">
               Don't have an account?{" "}
-              <Link to="/register" className="text-[#1e6dfff8] cursor-pointer">
+              <Link to="/signup" className="text-[#1e6dfff8] cursor-pointer">
                 Sign-up
               </Link>
             </p>

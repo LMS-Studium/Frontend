@@ -1,17 +1,18 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import Navbar from "../CommonComponent/Navbar";
 import PictureIcon from "../../assets/Group 2621.png";
 
 const StudentLandingPage = () => {
   return (
-    <div className="">
+    <div className="font-roboto">
       <Navbar></Navbar>
       <div className="w-[100%]  flex justify-center items-center ">
         <div className="w-[100%] p-10 flex justify-between bg-[#003b4d]">
           <div className="flex flex-col gap-y-10 ">
             <div className="w-[80%]">
               <h1 className="text-white text-5xl font-bold">
-                Build and Create Dreams Together with STUDIUM
+                Build and Create Dreams Together with LEXICON{" "}
               </h1>
             </div>
             <div className=" w-[60%]">

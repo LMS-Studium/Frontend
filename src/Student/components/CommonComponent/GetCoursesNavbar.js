@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className="font-roboto ">
       <header className="flex items-center justify-between bg-[#003b4d] px-10 py-5">
-        <div className="text-3xl font-semibold  text-white">LEXICON</div>
+        <div className="text-3xl font-semibold  text-white">STUDIUM</div>
         <div className="relative w-[50%] flex justify-between items-center">
           <input
             placeholder="Search your courses"
@@ -21,11 +21,11 @@ const Navbar = () => {
         </div>
         <div className="flex justify-between items-center space-x-10">
           <ul className="flex space-x-10 items-center justify-center">
-            <Link to="/get-courses">
-              <li className="cursor-pointer  text-white">Courses</li>
+            <Link to="/">
+              <li className="cursor-pointer  text-white">Home</li>
             </Link>
-            <Link to="/instructor-login">
-              <li className="cursor-pointer text-white">Become Instructor</li>
+            <Link to="/">
+              <li className="cursor-pointer  text-white">My courses</li>
             </Link>
           </ul>
           <div className="cursor-pointer ">
