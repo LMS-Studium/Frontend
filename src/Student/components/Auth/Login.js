@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import LoginPng from "../../assets/Login page img.png";
+import LoginPng from "../../assets/loginbg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../App.css";
 import { loginUser } from "../../services/LoginApi";
@@ -28,12 +28,12 @@ const Login = () => {
   };
 
   return (
-    <div className="font-roboto flex flex-col md:flex-row justify-between items-center w-full h-screen bg-[#74b9f5fb]">
+    <div className="font-roboto flex flex-col md:flex-row justify-between items-center w-full h-screen p-0 md:p-2">
       <div className="hidden md:flex h-full w-full md:w-[50%] items-center justify-center">
-        <img src={LoginPng} className="h-[50%] w-[100%] object-contain" />
+        <img src={LoginPng} className="h-[100%] w-[100%]" />
       </div>
 
-      <div className="w-full md:w-[40%] bg-slate-100 shadow-2xl  h-full flex items-center justify-center p-5 md:p-0">
+      <div className="w-full md:w-[40%] bg-[#74b9f596]  shadow-2xl rounded-lg h-full flex items-center justify-center p-5 md:p-0">
         <div className="w-full md:w-[80%]">
           <div className="flex items-center justify-center font-semibold text-[24px] md:text-[30px]">
             <h1>Hey, Welcome Back !</h1>
@@ -51,8 +51,8 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none"
+                placeholder="you@example.com"
+                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none placeholder-gray-600"
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -66,8 +66,8 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                placeholder="Enter your password"
-                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none"
+                placeholder="••••••••"
+                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none placeholder-gray-600"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
@@ -81,10 +81,13 @@ const Login = () => {
           </form>
 
           <div className="flex flex-col items-center justify-center mt-10">
-            <p className="text-[#9b9c9c]">- OR -</p>
+            <p className="text-black">- OR -</p>
             <p className="mt-5">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-[#1e6dfff8] cursor-pointer">
+              <Link
+                to="/signup"
+                className="text-[#2414ff] font-bold underline cursor-pointer"
+              >
                 Sign-up
               </Link>
             </p>
