@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginInstructor } from "../../services/LoginApi";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      // Now correctly passing an object
+      const response = await loginInstructor({ email, password });
+      console.log("Login Successful", response);
+
+      navigate("/instructor-dashboard");
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <form className="bg-white p-8 rounded shadow-md w-96">
+    <div className="flex items-center justify-center h-screen  bg-[#003b4d]">
+      <form
+        className="bg-white p-8 rounded-2xl  shadow-md w-96"
+        onSubmit={handleSubmit}
+      >
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
@@ -12,8 +38,9 @@ const Login = () => {
           <input
             type="email"
             required
-            className="mt-1 block w-full p-2 border rounded focus:ring focus:ring-blue-200 outline-none"
+            className="mt-1 block w-full p-2 border rounded focus:ring-1 focus:ring-blue-200 outline-none"
             placeholder="you@example.com"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-6">
@@ -23,13 +50,15 @@ const Login = () => {
           <input
             type="password"
             required
-            className="mt-1 block w-full p-2 border rounded focus:ring focus:ring-blue-200 outline-none"
+            className="mt-1 block w-full p-2 border rounded focus:ring-1 focus:ring-blue-200 outline-none"
             placeholder="••••••••"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+          className="w-full bg-[#003b4d] text-white p-2 rounded"
         >
           Login
         </button>

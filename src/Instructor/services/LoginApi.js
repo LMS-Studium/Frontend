@@ -1,23 +1,26 @@
-import axios from "axios";
-
 export const loginInstructor = async ({ email, password }) => {
   try {
-    const response = await axios.post(
+    console.log("Login attempt:", { email, password }); // Log the email and password sent
+
+    const response = await fetch(
       "https://lms-studium.up.railway.app/instructor-auth/login",
-      { email, password },
       {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ email, password }),
       }
     );
-    return response.data;
+
+    const data = await response.json();
+    console.log("Login response:", data); // Log the backend's response
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to login");
+    }
+    return data;
   } catch (error) {
-    console.log(
-      "Error login instructor".error.response?.data?.message || error.message
-    );
-    throw new Error(
-      error.response?.data?.message || "Failed to login instructor"
-    );
+    console.error("Login error:", error);
+    throw error;
   }
 };

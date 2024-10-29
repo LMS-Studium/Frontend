@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import LoginPng from "../../assets/loginbg.jpg";
+import LoginPng from "../../assets/loginbg-removebg.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../App.css";
 import { loginUser } from "../../services/LoginApi";
@@ -28,12 +28,12 @@ const Login = () => {
   };
 
   return (
-    <div className="font-roboto flex flex-col md:flex-row justify-between items-center w-full h-screen p-0 md:p-2">
+    <div className="font-roboto flex flex-col md:flex-row justify-between items-center w-full h-screen p-0 md:p-0 bg-[#088cffcb]">
       <div className="hidden md:flex h-full w-full md:w-[50%] items-center justify-center">
         <img src={LoginPng} className="h-[100%] w-[100%]" />
       </div>
 
-      <div className="w-full md:w-[40%] bg-[#74b9f596]  shadow-2xl rounded-lg h-full flex items-center justify-center p-5 md:p-0">
+      <div className="w-full md:w-[40%] bg-[#fafafa] shadow-2xl  h-full flex items-center justify-center p-5 md:p-0">
         <div className="w-full md:w-[80%]">
           <div className="flex items-center justify-center font-semibold text-[24px] md:text-[30px]">
             <h1>Hey, Welcome Back !</h1>
@@ -52,7 +52,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none placeholder-gray-600"
+                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none "
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -67,7 +67,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="••••••••"
-                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none placeholder-gray-600"
+                className="bg-transparent h-[50px] p-5 rounded-l border-[1px] border-black outline-none "
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />

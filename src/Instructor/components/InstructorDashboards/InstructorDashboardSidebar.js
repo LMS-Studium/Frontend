@@ -11,11 +11,10 @@ import {
   Edit,
   MessageCircle,
   LogOut,
-  CheckCircle,
-  Clock,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const InstructorDashboard = () => {
+const InstructorDashboardSidebar = () => {
   const [isOpen, setIsOpen] = useState(null);
   const [active, setActive] = useState(null);
 
@@ -23,12 +22,13 @@ const InstructorDashboard = () => {
     {
       title: "Dashboard",
       icon: LayoutDashboard,
+      Path: "/instructor-dashboard-home",
     },
     {
       title: "Course Management",
       icon: BookOpen,
       submenu: [
-        { title: "Create course", icon: PlusCircle },
+        { title: "Create course", icon: PlusCircle, Path: "/create-course" },
         { title: "Edit existing course", icon: Edit },
       ],
     },
@@ -70,44 +70,48 @@ const InstructorDashboard = () => {
           <div className="p-4">
             {sideBarMenuList.map((item, index) => (
               <div key={index} className="mb-2">
-                <button
-                  onClick={() => handleMenuClick(index)}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors duration-200 hover:bg-white/10
-                `}
-                >
-                  <div className="flex items-center gap-3">
-                    <item.icon size={20} />
-                    <span>{item.title}</span>
-                  </div>
-                  {item.submenu && (
-                    <ChevronDown
-                      className={`transition-transform duration-200 ${
-                        isOpen === index ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </button>
+                <Link to={item.Path}>
+                  <button
+                    onClick={() => handleMenuClick(index)}
+                    className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors duration-200 hover:bg-white/10
+                  `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <item.icon size={20} />
+                      <span>{item.title}</span>
+                    </div>
+                    {item.submenu && (
+                      <ChevronDown
+                        className={`transition-transform duration-200 ${
+                          isOpen === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </button>
+                </Link>
 
                 {item.submenu && (
                   <div
                     className={`overflow-hidden transition-all duration-200
-                    ${
-                      isOpen === index
-                        ? "max-h-48 opacity-100"
-                        : "max-h-0 opacity-0"
-                    }`}
+                      ${
+                        isOpen === index
+                          ? "max-h-48 opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
                   >
                     {item.submenu.map((subItem, subIndex) => (
-                      <button
-                        key={subIndex}
-                        className={`w-full text-left p-3 pl-12 rounded-lg transition-colors duration-200 hover:bg-white/10
-                      `}
-                      >
-                        <div className="flex items-center gap-3">
-                          <subItem.icon size={18} />
-                          <span>{subItem.title}</span>
-                        </div>
-                      </button>
+                      <Link to={subItem.Path}>
+                        <button
+                          key={subIndex}
+                          className={`w-full text-left p-3 pl-12 rounded-lg transition-colors duration-200 hover:bg-white/10
+                        `}
+                        >
+                          <div className="flex items-center gap-3">
+                            <subItem.icon size={18} />
+                            <span>{subItem.title}</span>
+                          </div>
+                        </button>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -116,13 +120,8 @@ const InstructorDashboard = () => {
           </div>
         </aside>
       </div>
-      <div className="">
-        <div className="flex justify-center items-center">
-          <h1 className="font-bold text-3xl">DASHBOARD</h1>
-        </div>
-      </div>
     </div>
   );
 };
 
-export default InstructorDashboard;
+export default InstructorDashboardSidebar;

@@ -1,23 +1,25 @@
-import axios from "axios";
-
 export const instructorSignup = async ({ name, email, password }) => {
   try {
-    const response = await axios.post(
+    const response = await fetch(
       "https://lms-studium.up.railway.app/instructor-auth/register",
-      { name, email, password },
       {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ name, email, password }), // wrap all fields in an object
       }
     );
 
-    return response.data;
+    if (!response.ok) {
+      const errorData = await response.json(); // Capture the backend's response for better error handling
+      throw new Error(errorData.message || "Failed to register user");
+    }
+
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.log(
-      "Error registering instructor",
-      error.response?.data?.message || error.message
-    );
-    throw new Error(error.response?.data?.message || "Failed to register user");
+    console.error("Error registering user:", error);
+    throw error;
   }
 };
