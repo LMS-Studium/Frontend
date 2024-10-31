@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import Navbar from "../CommonComponent/Navbar";
+import Navbar from "../../../CommonComponent/Navbar";
 import PictureIcon from "../../assets/Group 2621.png";
 
 const StudentLandingPage = () => {

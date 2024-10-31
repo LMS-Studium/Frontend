@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="font-roboto ">
-      <header className="flex items-center justify-between bg-[#003b4d] px-10 py-5">
+      <header className="flex items-center justify-between bg-[#003b4d] px-10 py-5 ">
         <div className="text-3xl font-semibold  text-white">LEXICON</div>
         <div className="relative w-[50%] flex justify-between items-center">
           <input
@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link to="/get-courses">
               <li className="cursor-pointer  text-white">Courses</li>
             </Link>
-            <Link to="/instructor-login">
+            <Link to="/instructor-landing">
               <li className="cursor-pointer text-white">Become Instructor</li>
             </Link>
           </ul>

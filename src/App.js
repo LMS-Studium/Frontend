@@ -9,6 +9,7 @@ import InstructorAuthLogin from "./Instructor/components/Auth/Login";
 import InstructorAuthSignup from "./Instructor/components/Auth/Signup";
 import InstructorDashboardHome from "./Instructor/components/InstructorDashboards/DashboardHome";
 import CreateCourse from "./Instructor/components/InstructorDashboards/CreateCourse";
+import InstructorLandingPage from "./Instructor/components/InstructorDashboards/InstructorLandingPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           element={<InstructorDashboardHome />}
         />
         <Route path="/create-course" element={<CreateCourse />} />
+        <Route path="/instructor-landing" element={<InstructorLandingPage />} />
       </Routes>
     </Router>
   );
