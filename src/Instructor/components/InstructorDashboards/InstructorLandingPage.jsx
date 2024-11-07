@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
+// @ts-ignore
 import React, { useState } from "react";
 import Navbar from "../../../CommonComponent/Navbar";
 import InstructorVector from "../../assets/bg.png";
 import { Book, Lightbulb, DollarSign } from "lucide-react";
+import { FaTwitter, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import PersonOne from "../../assets/person1.jpg";
 import PersonTwo from "../../assets/person2.jpg";
 import PersonThree from "../../assets/person3.jpg";
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const InstructorLandingPage = () => {
@@ -268,7 +270,40 @@ const InstructorLandingPage = () => {
       </div>
 
       {/*Footer*/}
-      <></>
+      <footer className="bg-gray-900 p-20 flex flex-col h-[300px]">
+        <div className="border-b-[1px] pb-5 border-slate-800 flex justify-center mx-auto items-center space-x-96 ">
+          <div className="">
+            <h1 className="text-white text-3xl font-semibold mb-5">Lexicon</h1>
+            <div className="flex justify-between  mt-auto space-x-4 ">
+              <FaInstagram size={30} color="white" />
+              <FaLinkedin size={30} color="white" />
+              <FaTwitter size={30} color="white" />
+              <FaGithub size={30} color="white" />
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center space-x-56 ">
+            <div className="text-slate-500 space-y-2">
+              <h1>About us</h1>
+              <h1>Contact us</h1>
+              <h1>Careers</h1>
+              <h1>Blog</h1>
+            </div>
+            <div className="text-slate-500 space-y-2">
+              <h1>About us</h1>
+              <h1>Contact us</h1>
+              <h1>Careers</h1>
+              <h1>Blog</h1>
+            </div>
+            <div className="text-slate-500 space-y-2">
+              <h1>About us</h1>
+              <h1>Contact us</h1>
+              <h1>Careers</h1>
+              <h1>Blog</h1>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
