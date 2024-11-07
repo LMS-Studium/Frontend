@@ -32,6 +32,25 @@ const StudentLandingPage = () => {
           </div>
         </div>
       </div>
+      {/*Stats Bar*/}
+      <div className="bg-[#EEF4FA] flex justify-between items-center p-24  h-[200px]  ">
+        <div className="flex justify-center items-center flex-col font-semibold text-2xl text-black">
+          <h1>85M+</h1>
+          <p>Students</p>
+        </div>
+        <div className="flex justify-center items-center flex-col font-semibold text-2xl text-black">
+          <h1>180+</h1>
+          <p>Countries</p>
+        </div>
+        <div className="flex justify-center items-center flex-col font-semibold text-2xl text-black">
+          <h1>150+</h1>
+          <p>Languages</p>
+        </div>
+        <div className="flex justify-center items-center flex-col font-semibold text-2xl text-black">
+          <h1>1 Million+</h1>
+          <p>Top Mentors</p>
+        </div>
+      </div>
     </div>
   );
 };

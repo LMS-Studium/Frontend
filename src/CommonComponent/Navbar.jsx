@@ -9,7 +9,12 @@ const Navbar = () => {
   return (
     <div className="font-roboto ">
       <header className="flex items-center justify-between bg-[#003b4d] px-10 py-5 ">
-        <div className="text-3xl font-semibold  text-white">LEXICON</div>
+        <Link to="/">
+          {" "}
+          <div className="text-3xl font-semibold  text-white cursor-pointer">
+            LEXICON
+          </div>
+        </Link>
         <div className="relative w-[50%] flex justify-between items-center">
           <input
             placeholder="Search your courses"
