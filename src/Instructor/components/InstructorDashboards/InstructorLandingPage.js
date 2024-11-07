@@ -4,6 +4,8 @@ import Navbar from "../../../CommonComponent/Navbar";
 import InstructorVector from "../../assets/bg.png";
 import { Book, Lightbulb, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
+import TabbedInsterface from "./InstructorLandingTabbedQuickGuideSection";
+import Testimonials from "./InstructorLandingImageGallary";
 
 const InstructorLandingPage = () => {
   return (
@@ -76,9 +78,16 @@ const InstructorLandingPage = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-col">
         <h1 className=" font-semibold text-4xl">A Guide to Getting Started</h1>
       </div>
+
+      <TabbedInsterface></TabbedInsterface>
+
+      <div className="flex justify-center items-center flex-col">
+        <h1 className=" font-semibold text-4xl">Our Top Instructor</h1>
+      </div>
+      <Testimonials></Testimonials>
     </div>
   );
 };
