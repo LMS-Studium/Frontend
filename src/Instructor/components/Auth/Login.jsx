@@ -17,7 +17,7 @@ const Login = () => {
       const response = await loginInstructor({ email, password });
       console.log("Login Successful", response);
 
-      navigate("/instructor-dashboard");
+      navigate("/instructor-dashboard-home");
     } catch (err) {
       console.log(err);
       setError(err.message);

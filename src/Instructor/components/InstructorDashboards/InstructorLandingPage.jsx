@@ -281,7 +281,6 @@ const InstructorLandingPage = () => {
               <FaGithub size={30} color="white" />
             </div>
           </div>
-
           <div className="flex justify-between items-center space-x-56 ">
             <div className="text-slate-500 space-y-2">
               <h1>About us</h1>
@@ -290,18 +289,21 @@ const InstructorLandingPage = () => {
               <h1>Blog</h1>
             </div>
             <div className="text-slate-500 space-y-2">
-              <h1>About us</h1>
-              <h1>Contact us</h1>
-              <h1>Careers</h1>
-              <h1>Blog</h1>
+              <h1>Help and Support</h1>
+              <h1>Terms</h1>
+              <h1>Privacy policy</h1>
+              <h1>Cookie settings</h1>
             </div>
             <div className="text-slate-500 space-y-2">
               <h1>About us</h1>
-              <h1>Contact us</h1>
-              <h1>Careers</h1>
-              <h1>Blog</h1>
+              <h1>Accessibility</h1>
+              <h1>Affiliate</h1>
+              <h1>Investors</h1>
             </div>
           </div>
+        </div>
+        <div className="text-gray-400 flex justify-center items-center mt-5">
+          © {new Date().getFullYear()} Lexicon, Inc.
         </div>
       </footer>
     </div>
