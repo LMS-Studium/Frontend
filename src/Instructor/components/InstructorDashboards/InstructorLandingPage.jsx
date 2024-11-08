@@ -80,7 +80,7 @@ const InstructorLandingPage = () => {
   return (
     <div className="font-roboto">
       <Navbar></Navbar>
-      <div className="flex justify-between items-center bg-[#003b4d] ">
+      <div className="flex justify-between items-center bg-[#03151b] ">
         <div className="flex justify-center p-10  flex-col w-[50%] h-[30vw]">
           <h1 className="text-[#ffffff] text-6xl font-bold  ">
             Want to teach with us

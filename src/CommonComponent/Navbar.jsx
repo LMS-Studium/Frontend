@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="font-roboto ">
-      <header className="flex items-center justify-between bg-[#003b4d] px-10 py-5 ">
+      <header className="flex items-center justify-between bg-[#03151b] px-10 py-5 ">
         <Link to="/">
           {" "}
           <div className="text-3xl font-semibold  text-white cursor-pointer">

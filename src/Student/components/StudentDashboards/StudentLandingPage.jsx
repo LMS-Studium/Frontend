@@ -8,7 +8,7 @@ const StudentLandingPage = () => {
     <div className="font-roboto">
       <Navbar></Navbar>
       <div className="w-[100%]  flex justify-center items-center ">
-        <div className="w-[100%] p-10 flex justify-between bg-[#003b4d]">
+        <div className="w-[100%] p-10 flex justify-between bg-[#03151b]">
           <div className="flex flex-col gap-y-10 ">
             <div className="w-[80%]">
               <h1 className="text-white text-5xl font-bold">

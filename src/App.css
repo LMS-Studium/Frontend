@@ -27,3 +27,19 @@
 .img-inactive {
   opacity: 0;
 }
+@keyframes slide-in {
+  from {
+    border-left-width: 0;
+    border-left-color: transparent;
+    opacity: 0;
+  }
+  to {
+    border-left-width: 4px;
+    border-left-color: #2ad8ff;
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s ease-in-out forwards;
+}

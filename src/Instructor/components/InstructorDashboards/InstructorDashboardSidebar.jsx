@@ -1,125 +1,134 @@
 import React, { useState } from "react";
-import {
-  LayoutDashboard,
-  DollarSign,
-  PlusCircle,
-  BookOpen,
-  Star,
-  MessageSquare,
-  ChevronDown,
-  BarChart,
-  Edit,
-  MessageCircle,
-  LogOut,
-} from "lucide-react";
-import { Link } from "react-router-dom";
+import { BookOpen, MessageSquare, BarChart, HelpCircle } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const InstructorDashboardSidebar = () => {
-  const [isOpen, setIsOpen] = useState(null);
-  const [active, setActive] = useState(null);
-
-  const sideBarMenuList = [
-    {
-      title: "Dashboard",
-      icon: LayoutDashboard,
-      Path: "/instructor-dashboard-home",
-    },
-    {
-      title: "Course Management",
-      icon: BookOpen,
-      submenu: [
-        { title: "Create course", icon: PlusCircle, Path: "/create-course" },
-        { title: "Edit existing course", icon: Edit },
-      ],
-    },
-    {
-      title: "Performance",
-      icon: BarChart,
-      submenu: [
-        { title: "Revenue", icon: DollarSign },
-        { title: "Reviews", icon: Star },
-      ],
-    },
-    {
-      title: "Communication",
-      icon: MessageSquare,
-      submenu: [
-        { title: "Q&A", icon: MessageCircle },
-        { title: "Message", icon: MessageSquare },
-      ],
-    },
-    {
-      title: "Logout",
-      icon: LogOut,
-    },
-  ];
-
-  const handleMenuClick = (index) => {
-    setIsOpen(isOpen === index ? null : index);
-    setActive(index);
-  };
+  const location = useLocation();
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="flex min-h-screen box-border font-roboto">
-      <div className="w-[20%]">
-        <aside className="bg-[#003b4d] text-white h-full w-full">
-          <div className="text-xl font-bold border-b border-white/20 pl-6 h-16 flex items-center">
-            <h1 className="text-3xl">Lexicon Instructor</h1>
-          </div>
-
-          <div className="p-4">
-            {sideBarMenuList.map((item, index) => (
-              <div key={index} className="mb-2">
-                <Link to={item.Path}>
-                  <button
-                    onClick={() => handleMenuClick(index)}
-                    className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors duration-200 hover:bg-white/10
-                  `}
-                  >
-                    <div className="flex items-center gap-3">
-                      <item.icon size={20} />
-                      <span>{item.title}</span>
-                    </div>
-                    {item.submenu && (
-                      <ChevronDown
-                        className={`transition-transform duration-200 ${
-                          isOpen === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    )}
-                  </button>
-                </Link>
-
-                {item.submenu && (
-                  <div
-                    className={`overflow-hidden transition-all duration-200
-                      ${
-                        isOpen === index
-                          ? "max-h-48 opacity-100"
-                          : "max-h-0 opacity-0"
-                      }`}
-                  >
-                    {item.submenu.map((subItem, subIndex) => (
-                      <Link to={subItem.Path}>
-                        <button
-                          key={subIndex}
-                          className={`w-full text-left p-3 pl-12 rounded-lg transition-colors duration-200 hover:bg-white/10
-                        `}
-                        >
-                          <div className="flex items-center gap-3">
-                            <subItem.icon size={18} />
-                            <span>{subItem.title}</span>
-                          </div>
-                        </button>
-                      </Link>
-                    ))}
-                  </div>
+    <div
+      className={`min-h-screen font-roboto transition-all duration-500 ease-in-out ${
+        isExpanded ? "w-64" : "w-16"
+      }`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
+      <aside className="bg-gray-950 text-white h-full w-full relative">
+        <div className="text-xl font-bold border-b border-white/20 h-16 flex items-center px-2 ">
+          <Link to="/create-course" className="flex items-center">
+            <div className="flex items-center gap-2 relative">
+              <div className="flex items-center justify-center overflow-hidden transition-all duration-300 ease-in-out">
+                {isExpanded ? (
+                  <span className="whitespace-nowrap text-2xl">
+                    Lexicon Instructor
+                  </span>
+                ) : (
+                  <span className="whitespace-nowrap text-3xl">LX</span>
                 )}
               </div>
-            ))}
+            </div>
+          </Link>
+        </div>
+
+        <nav className="pt-8 flex flex-col">
+          {/* Course Management */}
+          <div className="mb-6">
+            <Link to="/create-course">
+              <div
+                className={`flex gap-4 p-2 transition-all duration-200 hover:bg-white/10 ${
+                  location.pathname === "/create-course"
+                    ? "border-l-4 border-[#2ad8ff]"
+                    : "border-l-4 border-transparent"
+                }`}
+              >
+                <div className="flex-shrink-0">
+                  <BookOpen size={20} className="text-white" />
+                </div>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isExpanded ? "w-40 opacity-100" : "w-0 opacity-0"
+                  }`}
+                >
+                  <span className="whitespace-nowrap">Course Management</span>
+                </div>
+              </div>
+            </Link>
           </div>
-        </aside>
-      </div>
+
+          {/* Communication */}
+          <div className="mb-6">
+            <Link to="/communication">
+              <div
+                className={`flex items-center gap-4 p-2 transition-all duration-200 hover:bg-white/10 ${
+                  location.pathname === "/communication"
+                    ? "border-l-4 border-[#2ad8ff]"
+                    : "border-l-4 border-transparent"
+                }`}
+              >
+                <div className="flex-shrink-0">
+                  <MessageSquare size={20} className="text-white" />
+                </div>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isExpanded ? "w-40 opacity-100" : "w-0 opacity-0"
+                  }`}
+                >
+                  <span className="whitespace-nowrap">Communication</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Performance */}
+          <div className="mb-6">
+            <Link to="/performance">
+              <div
+                className={`flex items-center gap-4 p-2 transition-all duration-200 hover:bg-white/10 ${
+                  location.pathname === "/performance"
+                    ? "border-l-4 border-[#2ad8ff]"
+                    : "border-l-4 border-transparent"
+                }`}
+              >
+                <div className="flex-shrink-0">
+                  <BarChart size={20} className="text-white" />
+                </div>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isExpanded ? "w-40 opacity-100" : "w-0 opacity-0"
+                  }`}
+                >
+                  <span className="whitespace-nowrap">Performance</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Help */}
+          <div className="mb-6">
+            <Link to="/help">
+              <div
+                className={`flex items-center gap-4 p-2 transition-all duration-200 hover:bg-white/10 ${
+                  location.pathname === "/help"
+                    ? "border-l-4 border-[#2ad8ff]"
+                    : "border-l-4 border-transparent"
+                }`}
+              >
+                <div className="flex-shrink-0">
+                  <HelpCircle size={20} className="text-white" />
+                </div>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isExpanded ? "w-40 opacity-100" : "w-0 opacity-0"
+                  }`}
+                >
+                  <span className="whitespace-nowrap">Help</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </nav>
+      </aside>
     </div>
   );
 };
