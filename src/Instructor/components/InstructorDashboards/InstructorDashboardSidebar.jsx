@@ -8,7 +8,7 @@ const InstructorDashboardSidebar = () => {
 
   return (
     <div
-      className={`min-h-screen font-roboto transition-all duration-500 ease-in-out ${
+      className={`fixed z-40 h-screen font-roboto transition-all duration-500 ease-in-out ${
         isExpanded ? "w-64" : "w-16"
       }`}
       onMouseEnter={() => setIsExpanded(true)}
@@ -24,7 +24,7 @@ const InstructorDashboardSidebar = () => {
                     Lexicon Instructor
                   </span>
                 ) : (
-                  <span className="whitespace-nowrap text-3xl">LX</span>
+                  <span className="whitespace-nowrap text-4xl">LX</span>
                 )}
               </div>
             </div>
