@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const InstructorDashboardSidebar = () => {
   const location = useLocation();
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div

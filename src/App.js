@@ -12,6 +12,7 @@ import InstructorLandingPage from "./Instructor/components/InstructorDashboards/
 import InstructorCommunication from "./Instructor/components/InstructorDashboards/Communication.jsx";
 import InstructorPerformance from "./Instructor/components/InstructorDashboards/Performance.jsx";
 import InstructorHelp from "./Instructor/components/InstructorDashboards/Help.jsx";
+import CreateCrouseFormPage from "./Instructor/components/InstructorDashboards/CreateCrouseFormPage.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/communication" element={<InstructorCommunication />} />
         <Route path="/performance" element={<InstructorPerformance />} />
         <Route path="/help" element={<InstructorHelp />} />
+        <Route path="/create-course-form" element={<CreateCrouseFormPage />} />
       </Routes>
     </Router>
   );
