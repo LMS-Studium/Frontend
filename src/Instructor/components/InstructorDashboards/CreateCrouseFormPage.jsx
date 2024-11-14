@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { createCourse } from "../../services/CreateCourseApi"; // Adjust the import path as needed
 
 const steps = [
   "Do you have a working title in mind?",
-  "What category best describes the knowledge you'll be sharing?",
+  "What category best describes Your Course?",
   "Have you decided on a price?",
 ];
 
@@ -14,6 +15,8 @@ const Stepper = () => {
     category: "",
     price: "",
   });
+  const [loading, setLoading] = useState(false); // Loading state for API call
+  const token = localStorage.getItem("authToken");
 
   const next = () => setStep(Math.min(step + 1, steps.length - 1));
   const back = () => setStep(Math.max(step - 1, 0));
@@ -24,6 +27,33 @@ const Stepper = () => {
 
   const handleChange = (e) => {
     setCourseData({ ...courseData, [e.target.name]: e.target.value });
+  };
+
+  // Validation function for each step
+  const isStepValid = () => {
+    switch (step) {
+      case 0:
+        return courseData.title.trim().length >= 3;
+      case 1:
+        return courseData.category !== "";
+      case 2:
+        return courseData.price !== "" && Number(courseData.price) >= 0;
+      default:
+        return false;
+    }
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true); // Set loading to true before API call
+    try {
+      const responseData = await createCourse(courseData, token);
+      console.log("Course created successfully:", responseData);
+      reset(); // Reset form on successful submission
+    } catch (error) {
+      console.error("Error creating course:", error);
+    } finally {
+      setLoading(false); // Set loading back to false after API call
+    }
   };
 
   const renderStepContent = () => {
@@ -113,22 +143,35 @@ const Stepper = () => {
             </div>
 
             {/* Form Content */}
-            <div className="bg-white  mb-6">{renderStepContent()}</div>
+            <div className="bg-white mb-6">{renderStepContent()}</div>
 
             {/* Buttons */}
             <div className="flex justify-between gap-4">
               <button
                 onClick={back}
                 disabled={step === 0}
-                className="px-6 py-2 bg-black  transition-colors text-white cursor-pointer"
+                className={`px-6 py-2 text-white transition-colors ${
+                  step === 0
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-black cursor-pointer"
+                }`}
               >
                 Back
               </button>
               <button
-                onClick={step === steps.length - 1 ? reset : next}
-                className="px-6 py-2 bg-blue-950 text-white  transition-colors"
+                onClick={step === steps.length - 1 ? handleSubmit : next}
+                disabled={!isStepValid() || loading}
+                className={`px-6 py-2 text-white transition-colors ${
+                  !isStepValid() || loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-950 cursor-pointer"
+                }`}
               >
-                {step === steps.length - 1 ? "Submit" : "Next"}
+                {loading
+                  ? "Submitting..."
+                  : step === steps.length - 1
+                  ? "Submit"
+                  : "Next"}
               </button>
             </div>
           </div>
